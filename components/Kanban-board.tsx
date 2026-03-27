@@ -61,6 +61,8 @@ function DroppableColumn({
   config: ColConfig;
   boardId: string;
 }) {
+  const sortedJobs =
+    column.jobApplications?.sort((a, b) => a.order - b.order) || [];
   return (
     <Card className="min-w-[300px] flex-shrink-0 shadow-md p-0">
       <CardHeader
@@ -95,7 +97,7 @@ function DroppableColumn({
       <CardContent
         className={`space-y-2 pt-4 bg-gray-50/50 min-h-[400px] rounded-b-lg `}
       >
-        <CreateJobApplicationDialog />
+        <CreateJobApplicationDialog columnId={column._id} boardId={boardId} />
       </CardContent>
     </Card>
   );
